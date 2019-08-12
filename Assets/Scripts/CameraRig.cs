@@ -10,6 +10,10 @@ public class CameraRig : MonoBehaviour
     float _rigLength = 10f;
 
     [SerializeField]
+    [Tooltip("Initial eular angle for the camera rig.")]
+    Vector3 _initialEular = Vector3.zero;
+
+    [SerializeField]
     [Tooltip("The object which the camera follows.")]
     GameObject _attachedObject;
 
@@ -32,6 +36,11 @@ public class CameraRig : MonoBehaviour
     Camera _mainCamera;
     Vector3 _eularAngles = Vector3.zero;
 
+    public void Detach()
+    {
+        _attachedObject = null;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +48,7 @@ public class CameraRig : MonoBehaviour
 
         // make the camera 10 units back from the origin.
         _mainCamera.transform.localPosition = new Vector3(0, 0, -_rigLength);
+        _eularAngles = _initialEular;
 
         Move();
     }
@@ -69,7 +79,10 @@ public class CameraRig : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, _attachedObject.transform.position + _anchorPointOffset, _cameraMoveResponse);
+        if (_attachedObject)
+        {
+            transform.position = Vector3.Lerp(transform.position, _attachedObject.transform.position + _anchorPointOffset, _cameraMoveResponse);
+        }
     }
 
     private void Rotate()

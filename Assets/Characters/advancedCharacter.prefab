@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 8529517195655075669}
   m_Layer: 0
   m_Name: advancedCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -974,7 +974,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5309775595548051306}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.51122, y: 5, z: -3.932}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
@@ -1019,8 +1019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ddb8438eec11244836527f4866df9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _gravity: 9.8
+  _speed: 20
+  _gravity: 50
+  _jumpSpeed: 30
   _rig: {fileID: 0}
 --- !u!143 &8529517195655075669
 CharacterController:
