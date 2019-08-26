@@ -13,20 +13,22 @@ public class Saw : MonoBehaviour
     public float pauseDuration = 1f;
 
     private Transform currentDestination;
-    private Transform nextDestination;
+    private Transform currentDeparture;
     // Start is called before the first frame update
     void Start()
     {
         currentDestination = endPosition;
-        nextDestination = startPosition;
+        currentDeparture = startPosition;
         StartCoroutine(MoveBackAndForth());
     }
 
     private IEnumerator MoveBackAndForth()
     {
+        var distance = Vector3.Distance(startPosition.position, endPosition.position);
         while (true)
         {
-            if (sawModel.transform.position != currentDestination.position)
+            var currentDistance = Vector3.Distance(sawModel.transform.position, currentDeparture.position);
+            if (currentDistance < distance)
             {
                 var direction = currentDestination.position - sawModel.transform.position;
                 var moveDistance = direction.normalized * movingSpeed * Time.deltaTime;
@@ -35,8 +37,8 @@ public class Saw : MonoBehaviour
             }
             else
             {
-                var temp = nextDestination;
-                nextDestination = currentDestination;
+                var temp = currentDeparture;
+                currentDeparture = currentDestination;
                 currentDestination = temp;
                 yield return new WaitForSeconds(pauseDuration);
             }
