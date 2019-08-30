@@ -1,43 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField]
-    GameObject _deathTextOverlay;
-
-    [SerializeField]
-    GameObject _winTextOverlay;
-
-    [SerializeField]
-    CameraRig _cameraRig;
+    public GameObject deathTextOverlay;
+    public GameObject winTextOverlay;
+    public TextMeshProUGUI currentHitPointText;
+    public TextMeshProUGUI maxHitPointText;
+    public CameraRig cameraRig;
 
     private void Start()
     {
-        if (_deathTextOverlay)
+        if (deathTextOverlay)
         {
-            _deathTextOverlay.SetActive(false);
+            deathTextOverlay.SetActive(false);
         }
     }
 
     public void Win()
     {
-        if (_winTextOverlay)
+        if (winTextOverlay)
         {
-            _winTextOverlay.SetActive(true);
+            winTextOverlay.SetActive(true);
+        }
+    }
+
+    public void UpdateCurrentHitPoint(int hitPoints)
+    {
+        if (currentHitPointText != null)
+        {
+            currentHitPointText.text = hitPoints.ToString();
+        }
+    }
+
+    public void UpdateMaxHitPoint(int maxHitPoints)
+    {
+        if (maxHitPointText != null)
+        {
+            maxHitPointText.text = maxHitPoints.ToString();
         }
     }
 
     public void PlayerIsDead()
     {
-        if (_deathTextOverlay)
+        if (deathTextOverlay)
         {
-            _deathTextOverlay.SetActive(true);
+            deathTextOverlay.SetActive(true);
         }
 
-        _cameraRig?.Detach();
+        cameraRig?.Detach();
 
         StartCoroutine(ResetSceneAfter3Seconds());
     }

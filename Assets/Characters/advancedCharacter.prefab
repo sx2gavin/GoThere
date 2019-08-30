@@ -87,6 +87,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -382,6 +383,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -561,6 +563,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -803,6 +806,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -886,6 +890,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -960,6 +965,7 @@ GameObject:
   - component: {fileID: 5309775595540804778}
   - component: {fileID: 5473531614764959900}
   - component: {fileID: 8529517195655075669}
+  - component: {fileID: 2135969772}
   m_Layer: 0
   m_Name: advancedCharacter
   m_TagString: Player
@@ -1019,10 +1025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ddb8438eec11244836527f4866df9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
-  _gravity: 50
-  _jumpSpeed: 30
-  _rig: {fileID: 0}
+  speed: 20
+  gravity: 50
+  jumpSpeed: 30
+  knockBackHeight: 10
+  knockBackSpeed: 10
+  rig: {fileID: 0}
 --- !u!143 &8529517195655075669
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1041,6 +1049,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!114 &2135969772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309775595548051306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37aa9a9c924ad6243baf4692765dc8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invincibleDuration: 1
+  currentLife: 3
+  maxLife: 3
+  meshMaterial: {fileID: 2100000, guid: 5a93608b3e08a0f43b28b75f42ad8e06, type: 2}
 --- !u!1 &5309775595548051308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1121,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

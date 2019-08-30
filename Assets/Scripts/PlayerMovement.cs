@@ -4,55 +4,89 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float _speed = 10.0f;
-    [SerializeField] float _gravity = 9.8f;
-    [SerializeField] float _jumpSpeed = 10.0f;
-    [SerializeField] CameraRig _rig; // Camera rig determines the direction of the movement.
+    public float speed = 20f;
+    public float gravity = 50f;
+    public float jumpSpeed = 30.0f;
+    public float knockBackHeight;
+    public float knockBackSpeed;
 
-    CharacterController _characterController;
-    float _currentVerticalSpeed = 0.0f;
+    [Tooltip("Camera rig determines the direction of the movement.")]
+    public CameraRig rig;
+
+    CharacterController characterController;
+    float currentVerticalSpeed = 0.0f;
+    bool movable = true;
     // Start is called before the first frame update
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Jump();
-        Move();
-    }
-
-    private void Jump()
-    {
-        if (_characterController.isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            _currentVerticalSpeed = 0.0f;
-            if (Input.GetButton("Jump"))
-            {
-                _currentVerticalSpeed = _jumpSpeed;
-            }
+            Jump(jumpSpeed);
         }
         else
         {
-            _currentVerticalSpeed -= _gravity * Time.deltaTime;
+            Fall();
+        }
+        Move();
+    }
+
+    public void KnockBack(Vector3 direction)
+    {
+        StartCoroutine(KnockBackCoroutine(direction));
+    }
+
+    private IEnumerator KnockBackCoroutine(Vector3 direction)
+    {
+        movable = false;
+        Jump(knockBackHeight);
+        while (!characterController.isGrounded)
+        {
+            var movementThisFrame = new Vector3(direction.x, 0, direction.z) * knockBackSpeed * Time.deltaTime;
+            characterController.Move(movementThisFrame);
+            yield return new WaitForEndOfFrame();
+        }
+        movable = true;
+    }
+
+    private void Jump(float speed)
+    {
+        currentVerticalSpeed = speed;
+        characterController.Move(new Vector3(0, currentVerticalSpeed * Time.deltaTime, 0));
+    }
+
+    private void Fall()
+    {
+        if (characterController.isGrounded)
+        {
+            currentVerticalSpeed = 0.0f;
+        }
+        else
+        {
+            currentVerticalSpeed -= gravity * Time.deltaTime;
         }
 
-        _characterController.Move(new Vector3(0, _currentVerticalSpeed * Time.deltaTime, 0));
-
+        characterController.Move(new Vector3(0, currentVerticalSpeed * Time.deltaTime, 0));
     }
 
     private void Move()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if (movement.magnitude > 0.0f)
+        if (movable)
         {
-            var direction = Quaternion.Euler(0, _rig.transform.eulerAngles.y, 0);
-            movement = direction * movement * _speed * Time.deltaTime;
-            _characterController.Move(movement);
-            var yAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yAngle, 0), 0.5f);
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            if (movement.magnitude > 0.0f)
+            {
+                var direction = Quaternion.Euler(0, rig.transform.eulerAngles.y, 0);
+                movement = direction * movement * speed * Time.deltaTime;
+                characterController.Move(movement);
+                var yAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yAngle, 0), 0.5f);
+            }
         }
     }
 }
