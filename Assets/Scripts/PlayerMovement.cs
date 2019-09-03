@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 30.0f;
     public float knockBackHeight;
     public float knockBackSpeed;
+    public Animator animator;
 
     [Tooltip("Camera rig determines the direction of the movement.")]
     public CameraRig rig;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     float currentVerticalSpeed = 0.0f;
     bool movable = true;
+    int jumpLimit = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,14 +27,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetAxis("Jump") > 0 && characterController.isGrounded)
         {
             Jump(jumpSpeed);
         }
-        else
-        {
-            Fall();
-        }
+
+        Fall();
         Move();
     }
 
@@ -86,7 +86,16 @@ public class PlayerMovement : MonoBehaviour
                 characterController.Move(movement);
                 var yAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yAngle, 0), 0.5f);
+                animator.SetFloat("Speed", 1.0f);
             }
+            else
+            {
+                animator.SetFloat("Speed", 0.0f);
+            }
+        }
+        else
+        {
+            animator.SetFloat("Speed", 1.0f);
         }
     }
 }
