@@ -5329,21 +5329,6 @@ PrefabInstance:
       propertyPath: rig
       value: 
       objectReference: {fileID: 1400504617}
-    - target: {fileID: 1589728836639373504, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373504, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: m_Height
-      value: 3.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373504, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: m_SkinWidth
-      value: 0.0001
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39933dd87c09f204085fd4e945823ce6, type: 3}
 --- !u!1001 &2198957171358979720

@@ -64,11 +64,11 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3.5
+  m_Height: 3.4
   m_Radius: 0.9
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.75, z: 0}
 --- !u!114 &1589728836639373505
@@ -104,6 +104,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d1e489f29ad3a3547bcee9f7788feb6b, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 5ccda2651182d1c45a14f9102f4e56ab,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5ccda2651182d1c45a14f9102f4e56ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -184,11 +189,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5a93608b3e08a0f43b28b75f42ad8e06, type: 2}
-    - target: {fileID: -139352455604996665, guid: 5ccda2651182d1c45a14f9102f4e56ab,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a93608b3e08a0f43b28b75f42ad8e06, type: 2}
     - target: {fileID: 1384069400911154763, guid: 5ccda2651182d1c45a14f9102f4e56ab,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -200,6 +200,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 5a93608b3e08a0f43b28b75f42ad8e06, type: 2}
     - target: {fileID: 5331799564502180524, guid: 5ccda2651182d1c45a14f9102f4e56ab,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a93608b3e08a0f43b28b75f42ad8e06, type: 2}
+    - target: {fileID: -139352455604996665, guid: 5ccda2651182d1c45a14f9102f4e56ab,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
