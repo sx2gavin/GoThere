@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     float currentVerticalSpeed = 0.0f;
     bool movable = true;
-    int jumpLimit = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rig == null)
+        {
+            return;
+        }
+
         if (Input.GetAxis("Jump") > 0 && characterController.isGrounded)
         {
             Jump(jumpSpeed);
@@ -94,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            animator.SetFloat("Speed", 1.0f);
+            animator.SetFloat("Speed", 0.0f);
         }
     }
 }

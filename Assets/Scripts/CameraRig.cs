@@ -31,7 +31,9 @@ public class CameraRig : MonoBehaviour
 
     [SerializeField]
     [Range(0, 1)]
-    float _cameraRotateResponse = 0.5f; 
+    float _cameraRotateResponse = 0.5f;
+
+    public bool allowRotation = true;
 
     Camera _mainCamera;
     Vector3 _eularAngles = Vector3.zero;
@@ -46,9 +48,10 @@ public class CameraRig : MonoBehaviour
     {
         _mainCamera = GetComponentInChildren<Camera>();
 
-        // make the camera 10 units back from the origin.
+        // Move the camera back several units that equals to the length of the rig.
         _mainCamera.transform.localPosition = new Vector3(0, 0, -_rigLength);
         _eularAngles = _initialEular;
+        transform.rotation = Quaternion.Euler(_eularAngles);
 
         Move();
     }
@@ -87,9 +90,12 @@ public class CameraRig : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3 rotateAmount = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
-        _eularAngles += rotateAmount * _rotationSpeed;
-        _eularAngles.x = Mathf.Clamp(_eularAngles.x, -45f, 75f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_eularAngles), _cameraRotateResponse);
+        if (allowRotation)
+        {
+            Vector3 rotateAmount = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+            _eularAngles += rotateAmount * _rotationSpeed;
+            _eularAngles.x = Mathf.Clamp(_eularAngles.x, -45f, 75f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_eularAngles), _cameraRotateResponse);
+        }
     }
 }
