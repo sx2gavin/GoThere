@@ -69,9 +69,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             currentVerticalSpeed -= gravity * Time.deltaTime;
+            characterController.Move(new Vector3(0, currentVerticalSpeed * Time.deltaTime, 0));
         }
-
-        characterController.Move(new Vector3(0, currentVerticalSpeed * Time.deltaTime, 0));
     }
 
     private void Move()
