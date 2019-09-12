@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        if (movable)
+        if (movable && Time.timeScale > 0.0f)
         {
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             if (movement.magnitude > 0.0f)
