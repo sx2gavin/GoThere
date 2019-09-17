@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI currentHitPointText;
     public TextMeshProUGUI maxHitPointText;
     public CameraRig cameraRig;
+    
+    private bool hasWon = false;
 
     private void Start()
     {
@@ -20,11 +22,27 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (hasWon)
+        {
+            if (Input.GetAxis("Submit") > 0.0f)
+            {
+                // TODO: load next level.
+            }
+            else if (Input.GetAxis("Cancel") > 0.0f)
+            {
+                SceneLoader.Instance.LoadLevelSelectionScene();
+            }
+        }
+    }
+
     public void Win()
     {
         if (winTextOverlay)
         {
             winTextOverlay.SetActive(true);
+            hasWon = true;
         }
     }
 

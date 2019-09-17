@@ -59,9 +59,12 @@ public class CameraRig : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Rotate();
-        CheckForGround();
+        if (Time.timeScale > 0.0f)
+        {
+            Move();
+            Rotate();
+            CheckForGround();
+        }
     }
 
     private void CheckForGround()
