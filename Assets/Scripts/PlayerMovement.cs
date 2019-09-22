@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public CameraRig rig;
 
     CharacterController characterController;
-    float currentVerticalSpeed = 0.0f;
+    float currentVerticalSpeed;
     bool movable = true;
     // Start is called before the first frame update
     void Start()
@@ -35,8 +35,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump(jumpSpeed);
         }
+        else
+        {
+            Fall();
+        }
 
-        Fall();
         Move();
     }
 
@@ -58,9 +61,9 @@ public class PlayerMovement : MonoBehaviour
         movable = true;
     }
 
-    private void Jump(float speed)
+    private void Jump(float jumpSpeed)
     {
-        currentVerticalSpeed = speed;
+        currentVerticalSpeed = jumpSpeed;
         characterController.Move(new Vector3(0, currentVerticalSpeed * Time.deltaTime, 0));
     }
 
