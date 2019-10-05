@@ -126,7 +126,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16660
+  m_Name: pb_Mesh16666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5808,7 +5808,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16862
+  m_Name: pb_Mesh16848
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9769,7 +9769,7 @@ PrefabInstance:
     - target: {fileID: 1589728836639373506, guid: 39933dd87c09f204085fd4e945823ce6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.7
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 1589728836639373506, guid: 39933dd87c09f204085fd4e945823ce6,
         type: 3}
@@ -9819,12 +9819,37 @@ PrefabInstance:
     - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
         type: 3}
       propertyPath: jumpSpeed
-      value: 2
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
         type: 3}
       propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
+        type: 3}
+      propertyPath: groundCheckDistance
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
+        type: 3}
+      propertyPath: additionalGravityForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
+        type: 3}
+      propertyPath: knockBackHeight
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
+        type: 3}
+      propertyPath: knockBackSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589728836639373505, guid: 39933dd87c09f204085fd4e945823ce6,
+        type: 3}
+      propertyPath: canTakeDamage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39933dd87c09f204085fd4e945823ce6, type: 3}

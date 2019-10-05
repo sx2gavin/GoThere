@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     public int currentLife = 3;
     public int maxLife = 3;
     public Material meshMaterial;
+    public bool canTakeDamage = true;
 
     private bool isInvincible;
     private GameController gameController;
@@ -21,7 +22,11 @@ public class PlayerStats : MonoBehaviour
     {
         if (!isInvincible)
         {
-            currentLife -= damage;
+            if (canTakeDamage)
+            {
+                currentLife -= damage;
+            }
+
             gameController.UpdateCurrentHitPoint(currentLife);
             StartCoroutine(Invincible());
             if (currentLife == 0)

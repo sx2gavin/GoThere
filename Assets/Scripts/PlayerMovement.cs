@@ -6,20 +6,21 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 20f;
-    public float gravity = 50f;
+    public float additionalGravityForce = 10f;
     public float jumpSpeed = 30.0f;
     public float knockBackHeight;
     public float knockBackSpeed;
+    public float groundCheckDistance = 0.1f;
     public Animator animator;
 
     [Tooltip("Camera rig determines the direction of the movement.")]
     public CameraRig rig;
 
     new Rigidbody rigidbody;
-    float currentVerticalSpeed;
     bool movable = true;
     bool isClimbing = false;
     bool isGrounded = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,50 +35,42 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (Input.GetAxis("Jump") > 0 && isGrounded)
-        {
-            Jump(jumpSpeed);
-        }
-
+        CheckGroundState();
+        Airborne(jumpSpeed);
         Walk();
     }
 
     public void KnockBack(Vector3 direction)
     {
-        StartCoroutine(KnockBackCoroutine(direction));
+        var knockBackDirection = direction * knockBackSpeed;
+        rigidbody.AddForce(knockBackDirection, ForceMode.Impulse);
     }
 
-    private IEnumerator KnockBackCoroutine(Vector3 direction)
+
+    private void Airborne(float jumpSpeed)
     {
-        movable = false;
-        // Jump(knockBackHeight);
-        while (!isGrounded)
+        if (isGrounded && Input.GetAxis("Jump") > 0.0f)
         {
-            var movementThisFrame = new Vector3(direction.x, 0, direction.z) * knockBackSpeed * Time.deltaTime;
-            // characterController.Move(movementThisFrame);
-            transform.localPosition += movementThisFrame;
-            yield return new WaitForEndOfFrame();
+            var newVelocity = rigidbody.velocity;
+            newVelocity.y = jumpSpeed;
+            rigidbody.velocity = newVelocity;
         }
-        movable = true;
-    }
-
-
-    private void Jump(float jumpSpeed)
-    {
-        currentVerticalSpeed = jumpSpeed;
-        rigidbody.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
+        else
+        {
+            rigidbody.AddForce(Vector3.down * additionalGravityForce);
+        }
     }
 
     private void Walk()
     {
+        Vector3 movement = Vector3.zero;
         if (movable && Time.timeScale > 0.0f)
         {
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             if (movement.magnitude > 0.0f)
             {
                 var direction = Quaternion.Euler(0, rig.transform.eulerAngles.y, 0);
-                movement = direction * movement * speed * Time.deltaTime;
-                rigidbody.AddForce(movement, ForceMode.VelocityChange);
+                movement = direction * movement * speed;
                 var yAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yAngle, 0), 0.5f);
                 animator.SetFloat("Speed", 1.0f);
@@ -91,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Speed", 0.0f);
         }
+
+        movement.y = rigidbody.velocity.y;
+        rigidbody.velocity = movement;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -100,5 +96,24 @@ public class PlayerMovement : MonoBehaviour
         {
             isClimbing = true;
         }
+    }
+
+    private void CheckGroundState()
+    {
+        int layerMask = 0;
+        layerMask = ~layerMask; // check ground state with everything
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hitInfo, groundCheckDistance, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(transform.position + Vector3.up * 0.1f, transform.position + Vector3.up * 0.1f + Vector3.down * groundCheckDistance);
     }
 }
