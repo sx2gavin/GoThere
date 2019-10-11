@@ -126,7 +126,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16666
+  m_Name: pb_Mesh16668
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2586,6 +2586,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 929089652}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &739825323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 93b8da0870295974c9fe46a119d22054,
+    type: 3}
+  m_PrefabInstance: {fileID: 1882628358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &739825324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739825323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec435996a7390c04ca94e73e261255cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &739825325
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739825323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.9000001
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0.9, y: 5, z: 5}
 --- !u!1001 &757234319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5808,7 +5840,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16848
+  m_Name: pb_Mesh16850
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7148,36 +7180,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1589728835784224877}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1460177069
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460177067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 3.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.7, z: 0}
---- !u!54 &1460177072
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460177067}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!1 &1471867048
 GameObject:
   m_ObjectHideFlags: 0
@@ -8687,6 +8689,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3086145221760122059, guid: 4ed040f70b974ab4780eb49e71bb90c3,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 5fae4172a2812ca40ae98a10711c59da,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ed040f70b974ab4780eb49e71bb90c3, type: 3}
 --- !u!1 &1820684538
@@ -9816,41 +9824,6 @@ PrefabInstance:
       propertyPath: rig
       value: 
       objectReference: {fileID: 1400504617}
-    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: groundCheckDistance
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: additionalGravityForce
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: knockBackHeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373507, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: knockBackSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589728836639373505, guid: 39933dd87c09f204085fd4e945823ce6,
-        type: 3}
-      propertyPath: canTakeDamage
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39933dd87c09f204085fd4e945823ce6, type: 3}
 --- !u!1001 &2198957171358979720
