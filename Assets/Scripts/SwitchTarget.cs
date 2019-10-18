@@ -4,6 +4,20 @@ using UnityEngine;
 
 public abstract class SwitchTarget : MonoBehaviour
 {
-    public abstract void On();
-    public abstract void Off();
+    private bool isOn = false;
+    public bool IsOn()
+    {
+        return isOn;
+    }
+
+    public virtual void On()
+    {
+        isOn = true;
+    }
+
+    public virtual void Off()
+    {
+        isOn = false;
+    }
+
 }

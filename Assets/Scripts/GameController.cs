@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public CameraRig cameraRig;
     
     private bool hasWon = false;
+    private PlayerRespawn playerRespawn;
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class GameController : MonoBehaviour
         {
             deathTextOverlay.SetActive(false);
         }
+
+        playerRespawn = FindObjectOfType<PlayerRespawn>();
     }
 
     private void Update()
@@ -29,12 +32,19 @@ public class GameController : MonoBehaviour
             if (Input.GetAxis("Submit") > 0.0f)
             {
                 // TODO: load next level.
+                Cleanup();
             }
             else if (Input.GetAxis("Cancel") > 0.0f)
             {
                 SceneLoader.Instance.LoadLevelSelectionScene();
+                Cleanup();
             }
         }
+    }
+
+    public void Cleanup()
+    {
+        Destroy(playerRespawn.gameObject);
     }
 
     public void Win()

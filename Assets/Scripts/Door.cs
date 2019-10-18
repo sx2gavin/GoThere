@@ -6,11 +6,13 @@ public class Door : SwitchTarget
 {
     override public void On()
     {
-        transform.Rotate(0, 90, 0);
+        base.On();
+        transform.rotation = Quaternion.Euler(0, 90, 0);
     }
     
     override public void Off()
     {
-        transform.Rotate(0, -90, 0);
+        base.Off();
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }

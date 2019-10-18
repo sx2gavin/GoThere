@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    public float buttonPressDistance = 2f;
+    public float buttonPressDistance = 0.4f;
+    public GameObject knob;
     public SwitchTarget target;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        target?.On();
-        transform.Translate(Vector3.down * buttonPressDistance);
+        if (target && target.IsOn() == false)
+        {
+            target.On();
+            knob?.transform.Translate(Vector3.down * buttonPressDistance);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        target?.Off();
-        transform.Translate(Vector3.up * buttonPressDistance);
+        if (target && target.IsOn() == true)
+        {
+            target.Off();
+            knob?.transform.Translate(Vector3.up * buttonPressDistance);
+        }
     }
 }

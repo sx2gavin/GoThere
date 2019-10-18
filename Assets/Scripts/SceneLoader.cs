@@ -23,6 +23,7 @@ public class SceneLoader : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
     public void LoadLevelSelectionScene()
     {
         LoadScene(levelSelectionSceneName);
