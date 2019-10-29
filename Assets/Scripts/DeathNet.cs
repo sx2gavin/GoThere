@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class DeathNet : MonoBehaviour
 {
-    GameController _gameController;
+    GameController gameController;
 
     private void Start()
     {
-        _gameController = FindObjectOfType<GameController>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            _gameController?.PlayerIsDead();
+            gameController?.PlayerIsDead();
         }
     }
 }

@@ -10,10 +10,12 @@ public class GameController : MonoBehaviour
     public GameObject winTextOverlay;
     public TextMeshProUGUI currentHitPointText;
     public TextMeshProUGUI maxHitPointText;
+    public TextMeshProUGUI instructionText;
     public CameraRig cameraRig;
     
     private bool hasWon = false;
     private PlayerRespawn playerRespawn;
+    private Coroutine instructionCoroutine = null;
 
     private void Start()
     {
@@ -70,6 +72,24 @@ public class GameController : MonoBehaviour
         {
             maxHitPointText.text = maxHitPoints.ToString();
         }
+    }
+
+    public void UpdateInstructionText(string instruction)
+    {
+        if (instructionCoroutine != null)
+        {
+            StopCoroutine(instructionCoroutine);
+        }
+        instructionText.text = instruction;
+        instructionText.gameObject.SetActive(true);
+        instructionCoroutine = StartCoroutine(DelayHideInstructionText());
+    }
+
+    private IEnumerator DelayHideInstructionText()
+    {
+        yield return new WaitForSeconds(5.0f);
+        instructionText.gameObject.SetActive(false);
+        instructionText.text = "";
     }
 
     public void PlayerIsDead()

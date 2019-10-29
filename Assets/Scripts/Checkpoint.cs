@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    public Transform respawnPosition;
     private PlayerRespawn playerRespawn;
 
     private void Start()
@@ -15,7 +16,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            playerRespawn.SetNewCheckpoint(this.transform.position);
+            playerRespawn.SetNewCheckpoint(respawnPosition.position);
         }
     }
 }
