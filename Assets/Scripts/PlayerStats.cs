@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
 
     private bool isInvincible;
     private GameController gameController;
+    private int jewelCollected = 0;
     void Start()
     {
         gameController = FindObjectOfType<GameController>();    

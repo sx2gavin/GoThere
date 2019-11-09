@@ -12,10 +12,12 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI maxHitPointText;
     public TextMeshProUGUI instructionText;
     public CameraRig cameraRig;
-    
+    public int maxJewelCount = 3;
+
     private bool hasWon = false;
     private PlayerRespawn playerRespawn;
     private Coroutine instructionCoroutine = null;
+    private int jewelCollected = 0;
 
     private void Start()
     {
@@ -83,6 +85,11 @@ public class GameController : MonoBehaviour
         instructionText.text = instruction;
         instructionText.gameObject.SetActive(true);
         instructionCoroutine = StartCoroutine(DelayHideInstructionText());
+    }
+
+    public void CollectJewel()
+    {
+        jewelCollected++;
     }
 
     private IEnumerator DelayHideInstructionText()
