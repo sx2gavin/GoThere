@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Collider))]
+[RequireComponent(typeof(Rigidbody), typeof(Collider), typeof (Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     enum PlayerState
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float knockBackForce = 10.0f;
     public float groundCheckDistance = 0.01f;
     public float climbingSpeed = 10.0f;
-    public Animator animator;
+    private Animator animator;
 
     [Tooltip("Camera rig determines the direction of the movement.")]
     public CameraRig rig;
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

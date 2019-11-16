@@ -95,7 +95,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.23410405
-        functionName: PlayRandomFootStepSample
+        functionName: StepLeft
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 1c3f0b4bb58769d41a50d8a22c6fb5b9,
           type: 3}
@@ -103,7 +103,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.7514451
-        functionName: PlayRandomFootStepSample
+        functionName: StepRight
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 1c3f0b4bb58769d41a50d8a22c6fb5b9,
           type: 3}
