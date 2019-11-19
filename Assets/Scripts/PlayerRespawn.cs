@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerRespawn : MonoBehaviour
 {
     public Vector3 lastCheckpointPos;
+    public bool useCheckpointPos = true;
 
     private PlayerMovement player;
 
@@ -22,7 +23,11 @@ public class PlayerRespawn : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        instance.ResetPlayer();
+
+        if (useCheckpointPos)
+        {
+            instance.ResetPlayer();
+        }
     }
 
     // Start is called before the first frame update

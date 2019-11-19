@@ -6,6 +6,7 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour
 {
     public int damage = 1;
+    public GameObject bloodVFX;
 
     private Collider collider;
 
@@ -31,6 +32,10 @@ public class DamageDealer : MonoBehaviour
                 direction += Vector3.up;
                 direction.Normalize();
                 player.KnockBack(direction);
+
+                var contactPoint = (myCenter + otherCenter) / 2;
+                var blood = Instantiate(bloodVFX, otherCenter, Quaternion.identity);
+                Destroy(blood, 10.0f);
             }
         }
     }

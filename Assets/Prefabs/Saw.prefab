@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  bloodVFX: {fileID: 7497086778711252861, guid: 94bbaba5375a50a40bc475ade39259b0,
+    type: 3}
 --- !u!82 &3597992455860382221
 AudioSource:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2662892353802967740}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7427980936576188333, guid: d3165e28b8666d243a1e17dcf562ec43,
     type: 2}
