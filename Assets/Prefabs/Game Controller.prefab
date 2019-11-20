@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9237b4c6376404eb4c7b23638e3d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathTextOverlay: {fileID: 0}
-  _winTextOverlay: {fileID: 0}
-  _cameraRig: {fileID: 0}
+  deathTextOverlay: {fileID: 0}
+  winTextOverlay: {fileID: 0}
+  currentHitPointText: {fileID: 0}
+  maxHitPointText: {fileID: 0}
+  instructionText: {fileID: 0}
+  cameraRig: {fileID: 0}
+  maxJewelCount: 3

@@ -23,7 +23,7 @@ public class CameraRig : MonoBehaviour
 
     [SerializeField]
     [Tooltip("How smooth the camera response when the object moves.")]
-    [Range(0, 1)] float _cameraMoveResponse = 0.5f;
+    [Range(0, 0.1f)] float cameraSmoothTime = 0.07f;
 
     [SerializeField]
     [Tooltip("The speed of rotation.")]
@@ -59,12 +59,13 @@ public class CameraRig : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale > 0.0f)
-        {
-            Move();
-            Rotate();
-            CheckForGround();
-        }
+        //if (Time.timeScale > 0.0f)
+        //{
+
+        Move();
+        Rotate();
+        CheckForGround();
+        //}
     }
 
     private void CheckForGround()
@@ -85,10 +86,8 @@ public class CameraRig : MonoBehaviour
 
     private void Move()
     {
-        if (_attachedObject)
-        {
-            transform.position = Vector3.Lerp(transform.position, _attachedObject.transform.position + _anchorPointOffset, _cameraMoveResponse);
-        }
+        Vector3 velocity = Vector3.zero;
+        transform.position = Vector3.SmoothDamp(transform.position, _attachedObject.transform.position + _anchorPointOffset, ref velocity, cameraSmoothTime);
     }
 
     private void Rotate()
