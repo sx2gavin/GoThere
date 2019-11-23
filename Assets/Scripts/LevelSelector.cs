@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class LevelSelector : MonoBehaviour
 {
     public GameObject levelInfoCanvas;
+    public TextMeshProUGUI levelText;
+    public GameObject playedText;
     public string levelSceneName;
+    public bool played;
+
 
     private bool playerIsNear = false;
 
@@ -14,7 +19,13 @@ public class LevelSelector : MonoBehaviour
     {
         if (levelInfoCanvas != null)
         {
-            levelInfoCanvas.SetActive(false);
+            levelInfoCanvas.SetActive(true);
+        }
+
+        if (levelText != null)
+        {
+            levelText.SetText(levelSceneName);
+            playedText.SetActive(played);
         }
     }
 
@@ -29,6 +40,7 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -46,4 +58,5 @@ public class LevelSelector : MonoBehaviour
             playerIsNear = false;
         }
     }
+    */
 }
