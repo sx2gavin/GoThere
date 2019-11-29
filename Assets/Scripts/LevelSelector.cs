@@ -12,7 +12,6 @@ public class LevelSelector : MonoBehaviour
     public string levelSceneName;
     public bool played;
 
-
     private bool playerIsNear = false;
 
     private void Start()
@@ -39,13 +38,19 @@ public class LevelSelector : MonoBehaviour
             }
         }
     }
+    
+    public void SetPlayedFlag(bool value)
+    {
+        played = value;
+        playedText.SetActive(value);
+    }
 
-    /*
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            levelInfoCanvas?.SetActive(true);
+            // levelInfoCanvas?.SetActive(true);
             playerIsNear = true;
         }
     }
@@ -54,9 +59,8 @@ public class LevelSelector : MonoBehaviour
     {
         if (other.tag=="Player")
         {
-            levelInfoCanvas?.SetActive(false);
+            // levelInfoCanvas?.SetActive(false);
             playerIsNear = false;
         }
     }
-    */
 }

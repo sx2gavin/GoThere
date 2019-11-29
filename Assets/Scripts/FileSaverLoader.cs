@@ -5,47 +5,38 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class FileSaverLoader : MonoBehaviour
+public static class FileSaverLoader
 {
-    public LevelSelector[] allLevels;
-
-    private void Start()
+    public static void Save(string filename, GameProgress gameProgress)
     {
-    }
-
-    public void Save()
-    {
-        GameProgress progress = new GameProgress();
-        progress.levelsPlayed = new bool[allLevels.Length];
-        for(int i = 0; i < allLevels.Length; i++)
-        {
-            progress.levelsPlayed[i] = allLevels[i].played;
-        }
+    //    GameProgress progress = new GameProgress();
+    //    progress.levelsPlayed = new bool[allLevels.Length];
+    //    for(int i = 0; i < allLevels.Length; i++)
+    //    {
+    //        progress.levelsPlayed[i] = allLevels[i].played;
+    //    }
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gothere_saved_data.gd");
-        bf.Serialize(file, progress);
+        FileStream file = File.Create(Application.persistentDataPath + "/" + filename);
+        bf.Serialize(file, gameProgress);
         file.Close();
     }
 
-    public void Load()
+    public static GameProgress Load(string filename)
     {
-        if (File.Exists(Application.persistentDataPath + "/gothere_saved_data.gd"))
+        string fullPath = Application.persistentDataPath + "/" + filename;
+
+        if (File.Exists(fullPath))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gothere_saved_data.gd", FileMode.Open);
+            FileStream file = File.Open(fullPath, FileMode.Open);
             GameProgress progress = (GameProgress)bf.Deserialize(file);
             file.Close();
-
-            LoadProgressToLevels(progress);
+            return progress;
         }
-    }
-
-    private void LoadProgressToLevels(GameProgress progress)
-    {
-        for (int i = 0; i < allLevels.Length; i++)
+        else
         {
-            allLevels[i].played = progress.levelsPlayed[i];
+            return null;
         }
     }
 }
