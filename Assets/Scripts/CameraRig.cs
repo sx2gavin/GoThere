@@ -85,7 +85,10 @@ public class CameraRig : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, _attachedObject.transform.position + _anchorPointOffset, cameraMoveResponse);
+        if (_attachedObject)
+        {
+            transform.position = Vector3.Lerp(transform.position, _attachedObject.transform.position + _anchorPointOffset, cameraMoveResponse);
+        }
     }
 
     private void Rotate()

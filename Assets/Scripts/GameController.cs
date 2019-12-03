@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     public GameObject deathTextOverlay;
     public GameObject winTextOverlay;
+    public Hitpoints hitpointsDisplay;
     public TextMeshProUGUI currentHitPointText;
     public TextMeshProUGUI maxHitPointText;
     public TextMeshProUGUI instructionText;
@@ -62,9 +63,9 @@ public class GameController : MonoBehaviour
 
     public void UpdateCurrentHitPoint(int hitPoints)
     {
-        if (currentHitPointText != null)
+        if (hitpointsDisplay != null)
         {
-            currentHitPointText.text = hitPoints.ToString();
+            hitpointsDisplay.UpdateHitpoints(hitPoints);
         }
     }
 
