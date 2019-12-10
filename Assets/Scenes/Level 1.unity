@@ -23219,7 +23219,7 @@ PrefabInstance:
     - target: {fileID: 2615582259537132666, guid: bfa7f7d4f9882f044a41cc8789d13557,
         type: 3}
       propertyPath: useCheckpointPos
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfa7f7d4f9882f044a41cc8789d13557, type: 3}
@@ -23307,17 +23307,17 @@ PrefabInstance:
     - target: {fileID: 7999633698172543340, guid: 525543468eb0b9946a4f663effc1fbc4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 485
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 7999633698172543340, guid: 525543468eb0b9946a4f663effc1fbc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7999633698172543340, guid: 525543468eb0b9946a4f663effc1fbc4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 7999633698172543340, guid: 525543468eb0b9946a4f663effc1fbc4,
         type: 3}
