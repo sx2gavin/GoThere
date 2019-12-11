@@ -48,7 +48,7 @@ MonoBehaviour:
   _initialEular: {x: 30, y: -90, z: 0}
   _attachedObject: {fileID: 0}
   _anchorPointOffset: {x: 0, y: 3, z: 0}
-  cameraMoveResponse: 0.5
+  cameraMoveResponse: 1
   _rotationSpeed: 5
   _cameraRotateResponse: 0.5
   allowRotation: 1

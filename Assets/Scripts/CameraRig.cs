@@ -57,7 +57,7 @@ public class CameraRig : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (Time.timeScale > 0.0f)
         {
