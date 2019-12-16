@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    GameController _gameController;
+    WinMenu winMenu;
 
     private void Start()
     {
-        _gameController = FindObjectOfType<GameController>();
+        winMenu = FindObjectOfType<WinMenu>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            _gameController?.Win();
+            winMenu?.Win();
         }
     }
 }

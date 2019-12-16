@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameController : MonoBehaviour
 {
     public GameObject deathTextOverlay;
-    public GameObject winTextOverlay;
     public Hitpoints hitpointsDisplay;
     public TextMeshProUGUI currentHitPointText;
     public TextMeshProUGUI maxHitPointText;
@@ -30,35 +30,9 @@ public class GameController : MonoBehaviour
         playerRespawn = FindObjectOfType<PlayerRespawn>();
     }
 
-    private void Update()
-    {
-        if (hasWon)
-        {
-            if (Input.GetAxis("Submit") > 0.0f)
-            {
-                // TODO: load next level.
-                Cleanup();
-            }
-            else if (Input.GetAxis("Cancel") > 0.0f)
-            {
-                SceneLoader.Instance.LoadLevelSelectionScene();
-                Cleanup();
-            }
-        }
-    }
-
     public void Cleanup()
     {
         Destroy(playerRespawn.gameObject);
-    }
-
-    public void Win()
-    {
-        if (winTextOverlay)
-        {
-            winTextOverlay.SetActive(true);
-            hasWon = true;
-        }
     }
 
     public void UpdateCurrentHitPoint(int hitPoints)
