@@ -44,9 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTextOverlay: {fileID: 0}
-  winTextOverlay: {fileID: 0}
-  currentHitPointText: {fileID: 0}
-  maxHitPointText: {fileID: 0}
+  hitpointsDisplay: {fileID: 0}
   instructionText: {fileID: 0}
   cameraRig: {fileID: 0}
   maxJewelCount: 3

@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour
                 currentLife -= damage;
             }
 
-            gameController.UpdateCurrentHitPoint(currentLife);
+            gameController.UpdateCurrentHitpoint(currentLife);
             StartCoroutine(Invincible());
             if (currentLife == 0)
             {
@@ -42,13 +42,25 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void GainLife(int life)
+    {
+        currentLife += life;
+
+        if (currentLife > maxLife)
+        {
+            currentLife = maxLife;
+        }
+
+        gameController.UpdateCurrentHitpoint(currentLife);
+    }
+
     // Let the player be invincible for a short time.
     private IEnumerator Invincible()
     {
-        meshMaterial.color = Color.red;
+        meshMaterial.SetColor("_BaseColor", Color.red);
         isInvincible = true;
         yield return new WaitForSeconds(invincibleDuration);
-        meshMaterial.color = Color.white;
+        meshMaterial.SetColor("_BaseColor", Color.white);
         isInvincible = false;
     }
 }

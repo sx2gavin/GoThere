@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   additionalGravityForce: 30
-  jumpSpeed: 20
+  jumpSpeed: 25
   knockBackForce: 15
   groundCheckDistance: 0.11
   climbingSpeed: 10

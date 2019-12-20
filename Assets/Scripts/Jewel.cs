@@ -5,13 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource), typeof(Renderer))]
 public class Jewel : MonoBehaviour
 {
-    private GameController gameController;
+    private JewelCount jewelCount;
     private AudioSource audioSource;
     private Renderer meshRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        gameController = FindObjectOfType<GameController>();
+        jewelCount = FindObjectOfType<JewelCount>();
         audioSource = GetComponent<AudioSource>();
         meshRenderer = GetComponent<Renderer>();
     }
@@ -20,7 +20,7 @@ public class Jewel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            gameController.CollectJewel();
+            jewelCount?.CollectJewel();
             audioSource.Play();
             meshRenderer.enabled = false;
             Destroy(this.gameObject, 0.5f);
