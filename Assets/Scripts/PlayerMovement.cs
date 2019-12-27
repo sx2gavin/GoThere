@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     enum PlayerState
     {
         Grounded,
+        Jumping,
         Airborne,
         KnockBack,
         Climb
@@ -49,7 +50,10 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.Grounded:
                 Move(speed);
-                HandleJump(jumpSpeed);
+                HandleJump();
+                break;
+            case PlayerState.Jumping:
+                Jumping();
                 break;
             case PlayerState.Airborne:
                 Move(speed);
@@ -91,18 +95,31 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.velocity = knockBackDirection;
     }
 
-    private void HandleJump(float jumpSpeed)
+    private void HandleJump()
     {
         // Normal jump
         if (playerState == PlayerState.Grounded && Input.GetAxis("Jump") > 0.0f)
         {
-            var newVelocity = rigidbody.velocity;
-            newVelocity.y = jumpSpeed;
-            rigidbody.velocity = newVelocity;
-            playerState = PlayerState.Airborne;
+            animator.SetBool("InAir", true);
         }
 
         // Cliff jump
+        if (CheckIfGrounded() == false)
+        {
+            playerState = PlayerState.Airborne;
+        }
+    }
+
+    public void StartJump()
+    {
+        var newVelocity = rigidbody.velocity;
+        newVelocity.y = jumpSpeed;
+        rigidbody.velocity = newVelocity;
+        playerState = PlayerState.Jumping;
+    }
+
+    public void Jumping()
+    {
         if (CheckIfGrounded() == false)
         {
             playerState = PlayerState.Airborne;
@@ -114,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.AddForce(Vector3.down * additionalGravityForce);
         if (CheckIfGrounded())
         {
+            animator.SetBool("InAir", false);
             playerState = PlayerState.Grounded;
         }
     }
@@ -123,11 +141,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (movement.magnitude > 0.0f)
         {
+            animator.SetFloat("Speed", movement.magnitude);
             var direction = Quaternion.Euler(0, rig.transform.eulerAngles.y, 0);
             movement = direction * movement * speed;
             var yAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yAngle, 0), 0.5f);
-            animator.SetFloat("Speed", 1.0f);
         }
         else
         {
