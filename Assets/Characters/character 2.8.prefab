@@ -1124,8 +1124,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bae87da5b05fba1458d7491fe4883913, type: 3}
   footDust: {fileID: 5568615189167661294, guid: a804a990abb24014ea8408314ba87c43,
     type: 3}
-  rightFoot: {fileID: 0}
-  leftFoot: {fileID: 0}
+  rightFoot: {fileID: 7727107892381108427}
+  leftFoot: {fileID: 7570907471200583915}
 --- !u!114 &5478516176173580141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   invincibleDuration: 1
   currentLife: 3
   maxLife: 3
-  meshMaterial: {fileID: 2100000, guid: 5a93608b3e08a0f43b28b75f42ad8e06, type: 2}
+  meshMaterial: {fileID: 2100000, guid: 8beec0b0169cc9a459e8012a8cb16edc, type: 2}
   canTakeDamage: 1
 --- !u!1 &4614577434996568289
 GameObject:

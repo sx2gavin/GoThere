@@ -44,16 +44,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        CheckIfGrounded();
-
         switch (playerState)
         {
             case PlayerState.Grounded:
                 Move(speed);
                 HandleJump();
+                HandleFall();
                 break;
             case PlayerState.Jumping:
-                Jumping();
+                HandleFall();
                 break;
             case PlayerState.Airborne:
                 Move(speed);
@@ -98,15 +97,18 @@ public class PlayerMovement : MonoBehaviour
     private void HandleJump()
     {
         // Normal jump
-        if (playerState == PlayerState.Grounded && Input.GetAxis("Jump") > 0.0f)
+        if (playerState == PlayerState.Grounded && Input.GetButtonDown("Jump"))
         {
-            animator.SetBool("InAir", true);
+            animator.SetTrigger("Jump");
         }
+    }
 
-        // Cliff jump
+    private void HandleFall()
+    {
         if (CheckIfGrounded() == false)
         {
             playerState = PlayerState.Airborne;
+            animator.SetBool("InAir", true);
         }
     }
 
@@ -116,14 +118,6 @@ public class PlayerMovement : MonoBehaviour
         newVelocity.y = jumpSpeed;
         rigidbody.velocity = newVelocity;
         playerState = PlayerState.Jumping;
-    }
-
-    public void Jumping()
-    {
-        if (CheckIfGrounded() == false)
-        {
-            playerState = PlayerState.Airborne;
-        }
     }
 
     private void Airborne()

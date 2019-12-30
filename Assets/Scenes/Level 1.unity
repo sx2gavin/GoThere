@@ -21879,6 +21879,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1851332073, guid: e33b87e149338ec469507d8273a99d30, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851332073, guid: e33b87e149338ec469507d8273a99d30, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851332073, guid: e33b87e149338ec469507d8273a99d30, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851332073, guid: e33b87e149338ec469507d8273a99d30, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851332073, guid: e33b87e149338ec469507d8273a99d30, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -820.1325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851332073, guid: e33b87e149338ec469507d8273a99d30, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -247.94704
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e33b87e149338ec469507d8273a99d30, type: 3}
 --- !u!4 &6678199447125949500 stripped
