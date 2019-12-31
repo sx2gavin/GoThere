@@ -1139,10 +1139,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  additionalGravityForce: 30
-  jumpSpeed: 25
+  additionalGravityForce: 80
+  jumpSpeed: 35
   knockBackForce: 15
-  groundCheckDistance: 0.3
+  groundCheckDistance: 0.4
   climbingSpeed: 10
   rig: {fileID: 0}
 --- !u!114 &5478516176173580140

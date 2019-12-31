@@ -26,8 +26,24 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Camera rig determines the direction of the movement.")]
     public CameraRig rig;
 
-    new Rigidbody rigidbody;
-    PlayerState playerState = PlayerState.Grounded;
+    private new Rigidbody rigidbody;
+    private PlayerState playerState = PlayerState.Grounded;
+
+    public void KnockBack(Vector3 direction)
+    {
+        playerState = PlayerState.KnockBack;
+        var knockBackDirection = direction * knockBackForce;
+        LiftPlayerOffGround();
+        rigidbody.velocity = knockBackDirection;
+    }
+
+    public void StartJump()
+    {
+        var newVelocity = rigidbody.velocity;
+        newVelocity.y = jumpSpeed;
+        rigidbody.velocity = newVelocity;
+        playerState = PlayerState.Jumping;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -86,14 +102,6 @@ public class PlayerMovement : MonoBehaviour
         return Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hitInfo, 0.1f + groundCheckDistance, layerMask, QueryTriggerInteraction.Ignore);
     }
 
-    public void KnockBack(Vector3 direction)
-    {
-        playerState = PlayerState.KnockBack;
-        var knockBackDirection = direction * knockBackForce;
-        LiftPlayerOffGround();
-        rigidbody.velocity = knockBackDirection;
-    }
-
     private void HandleJump()
     {
         // Normal jump
@@ -112,14 +120,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void StartJump()
-    {
-        var newVelocity = rigidbody.velocity;
-        newVelocity.y = jumpSpeed;
-        rigidbody.velocity = newVelocity;
-        playerState = PlayerState.Jumping;
-    }
-
     private void Airborne()
     {
         rigidbody.AddForce(Vector3.down * additionalGravityForce);
@@ -130,14 +130,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Move(float speed)
+    private void Move(float movementSpeed)
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (movement.magnitude > 0.0f)
         {
             animator.SetFloat("Speed", movement.magnitude);
             var direction = Quaternion.Euler(0, rig.transform.eulerAngles.y, 0);
-            movement = direction * movement * speed;
+            movement = direction * movement * movementSpeed;
             var yAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yAngle, 0), 0.5f);
         }
