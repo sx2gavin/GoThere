@@ -366,9 +366,9 @@ RectTransform:
   m_Father: {fileID: 6644551761774176091}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 138.23, y: 156}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -820.1325, y: -247.94704}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1851332075
@@ -1849,6 +1849,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevelSelectionScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2802653634058170844, guid: 5a66da48c9598c14da527b0994fbf172,
         type: 3}
       propertyPath: m_text
@@ -1876,22 +1881,17 @@ PrefabInstance:
       propertyPath: m_textInfo.lineCount
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevelSelectionScene
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a66da48c9598c14da527b0994fbf172, type: 3}
---- !u!1 &8974874691939875680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2358505647857448709, guid: 5a66da48c9598c14da527b0994fbf172,
-    type: 3}
-  m_PrefabInstance: {fileID: 6644551760527723621}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5240737426906320968 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1480811760740670509, guid: 5a66da48c9598c14da527b0994fbf172,
+    type: 3}
+  m_PrefabInstance: {fileID: 6644551760527723621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8974874691939875680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2358505647857448709, guid: 5a66da48c9598c14da527b0994fbf172,
     type: 3}
   m_PrefabInstance: {fileID: 6644551760527723621}
   m_PrefabAsset: {fileID: 0}
@@ -2012,6 +2012,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevelSelectionScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2802653634058170844, guid: 5a66da48c9598c14da527b0994fbf172,
         type: 3}
       propertyPath: m_text
@@ -2048,11 +2053,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevelSelectionScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a66da48c9598c14da527b0994fbf172, type: 3}
@@ -2179,6 +2179,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2802653634058170844, guid: 5a66da48c9598c14da527b0994fbf172,
         type: 3}
       propertyPath: m_text
@@ -2215,21 +2230,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890368737185766531, guid: 5a66da48c9598c14da527b0994fbf172,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a66da48c9598c14da527b0994fbf172, type: 3}

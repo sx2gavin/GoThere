@@ -1142,7 +1142,7 @@ MonoBehaviour:
   additionalGravityForce: 30
   jumpSpeed: 25
   knockBackForce: 15
-  groundCheckDistance: 0.11
+  groundCheckDistance: 0.3
   climbingSpeed: 10
   rig: {fileID: 0}
 --- !u!114 &5478516176173580140
