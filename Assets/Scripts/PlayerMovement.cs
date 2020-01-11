@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     private new Rigidbody rigidbody;
     private PlayerState playerState = PlayerState.Grounded;
 
+    private Pickup pickup;
+    private bool isHoldingPickup = false;
+
     public void KnockBack(Vector3 direction)
     {
         playerState = PlayerState.KnockBack;
@@ -66,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
                 Move(speed);
                 HandleJump();
                 HandleFall();
+                HandleAction();
                 break;
             case PlayerState.Jumping:
                 HandleFall();
@@ -82,6 +86,32 @@ public class PlayerMovement : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void HandleAction()
+    {
+        if (Input.GetButtonDown("Interact"))
+        {
+            Debug.Log("Handle Interact");
+            if (pickup != null)
+            {
+                GameObject pickupObject = pickup.gameObject;
+                if (!isHoldingPickup)
+                {
+                    pickup.PickedUp();
+                    pickupObject.transform.SetParent(transform);
+                    pickupObject.transform.localPosition = new Vector3(0, 3.5f, 0);
+                    pickupObject.transform.localRotation = Quaternion.identity;
+                    isHoldingPickup = true;
+                }
+                else
+                {
+                    pickupObject.transform.SetParent(null);
+                    pickup.Dropped();
+                    isHoldingPickup = false;
+                }
+            }
         }
     }
 
@@ -160,6 +190,16 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(ladderCenter.x, transform.position.y, ladderCenter.z);
             LiftPlayerOffGround();
         }
+
+        var pickupItem = other.GetComponent<Pickup>();
+        if (pickupItem != null)
+        {
+            if (!isHoldingPickup)
+            {
+                Debug.Log("Enter pickup");
+                pickup = pickupItem;
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -177,6 +217,16 @@ public class PlayerMovement : MonoBehaviour
         if (ladder != null)
         {
             playerState = PlayerState.Airborne;
+        }
+
+        var pickupItem = other.GetComponent<Pickup>();
+        if (pickupItem != null)
+        {
+            if (!isHoldingPickup)
+            {
+                Debug.Log("Exit pickup");
+                pickup = null;
+            }
         }
     }
 
