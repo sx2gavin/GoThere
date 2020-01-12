@@ -996,10 +996,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c001b3ae20a44254ab1b2e03cc9900bf, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.04
-  m_Height: 0.16
+  m_Radius: 0.8
+  m_Height: 3.3
   m_Direction: 1
-  m_Center: {x: 0, y: 0.08, z: 0}
+  m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!82 &5478516176173580139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1131,11 +1131,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  additionalGravityForce: 200
-  jumpSpeed: 35
+  additionalGravityForce: 0
+  jumpSpeed: 20
   knockBackForce: 15
   groundCheckDistance: 0.4
   climbingSpeed: 10
+  throwDirection: {x: 0, y: 1, z: 0.8}
+  throwSpeed: 7
+  itemLocalPosition: {x: 0, y: 3.2, z: 0}
   rig: {fileID: 0}
 --- !u!114 &5478516176173580140
 MonoBehaviour:

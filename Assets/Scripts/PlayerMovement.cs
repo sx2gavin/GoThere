@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public float knockBackForce = 10.0f;
     public float groundCheckDistance = 0.01f;
     public float climbingSpeed = 10.0f;
+    public Vector3 throwDirection = new Vector3(0, 1f, 1f);
+    public float throwSpeed = 5f;
+    public Vector3 itemLocalPosition = new Vector3(0, 1f, -2f);
     private Animator animator;
 
     [Tooltip("Camera rig determines the direction of the movement.")]
@@ -63,13 +66,14 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        HandleAction();
+
         switch (playerState)
         {
             case PlayerState.Grounded:
                 Move(speed);
                 HandleJump();
                 HandleFall();
-                HandleAction();
                 break;
             case PlayerState.Jumping:
                 HandleFall();
@@ -101,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     pickup.PickedUp();
                     pickupObject.transform.SetParent(transform);
-                    pickupObject.transform.localPosition = new Vector3(0, 3.5f, 0);
+                    pickupObject.transform.localPosition = itemLocalPosition;
                     pickupObject.transform.localRotation = Quaternion.identity;
                     isHoldingPickup = true;
                 }
@@ -109,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     pickupObject.transform.SetParent(null);
                     pickup.Dropped();
+                    pickup.GetComponent<Rigidbody>().AddForce(rigidbody.velocity + transform.rotation * throwDirection * throwSpeed, ForceMode.VelocityChange);
                     isHoldingPickup = false;
                 }
             }
