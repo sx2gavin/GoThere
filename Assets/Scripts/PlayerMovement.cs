@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Collider), typeof (Animator))]
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class PlayerMovement : MonoBehaviour
 {
     enum PlayerState
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 throwDirection = new Vector3(0, 1f, 1f);
     public float throwSpeed = 5f;
     public Vector3 itemLocalPosition = new Vector3(0, 1f, -2f);
-    private Animator animator;
+    [SerializeField] private Animator animator;
 
     [Tooltip("Camera rig determines the direction of the movement.")]
     public CameraRig rig;
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
