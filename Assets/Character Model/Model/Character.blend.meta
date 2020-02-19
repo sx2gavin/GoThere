@@ -9,6 +9,12 @@ ModelImporter:
   - first:
       74: 786504323170427181
     second: Armature|T-Pose
+  - first:
+      74: 8349542763059015795
+    second: Armature|Walk
+  - first:
+      74: -7551964380084998518
+    second: Armature|Run
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -79,6 +85,64 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Walk
+      takeName: Armature|Walk
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Run
+      takeName: Armature|Run
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -176,17 +240,18 @@ ModelImporter:
     - name: UpperArm.R
       parentName: Neck
       position: {x: 2.532618, y: 0.48268595, z: 0.00000003724519}
-      rotation: {x: -0.000000033901834, y: -0.000000034949608, z: 0.71345264, w: -0.70070344}
+      rotation: {x: -0.0000000025758269, y: -0.000000050184447, z: 0.99567497, w: -0.09290568}
       scale: {x: 1.0000029, y: 1.0000067, z: 1}
     - name: Forearm.R
       parentName: UpperArm.R
       position: {x: 0.00000023841858, y: 2.5262976, z: -1.0658141e-14}
-      rotation: {x: -0.0000000131328655, y: -0.000000006403134, z: -0.115864456, w: 0.99326503}
+      rotation: {x: -0.0000000140586405, y: -0.000000006851501, z: -0.09290606, w: 0.9956749}
       scale: {x: 1.0000069, y: 1.0000064, z: 1}
     - name: Hand.R
       parentName: Forearm.R
       position: {x: -0.657949, y: 1.913397, z: 0.000000049884246}
-      rotation: {x: -0.0000000012315295, y: 0.0000000042876884, z: 0.08651286, w: 0.99625075}
+      rotation: {x: 0.000000010929339, y: 0.0000000095177795, z: -0.0000000074505797,
+        w: 1}
       scale: {x: 0.9999999, y: 1.0000001, z: 1}
     - name: Fingers.R
       parentName: Hand.R
@@ -212,17 +277,17 @@ ModelImporter:
     - name: UpperArm.L
       parentName: Neck
       position: {x: -2.4993293, y: 0.5159741, z: 0.00000004077722}
-      rotation: {x: 0.000000033735827, y: -0.000000034049737, z: 0.71363413, w: 0.7005186}
+      rotation: {x: 0.0000000027445004, y: -0.00000004989654, z: 0.9951807, w: 0.09805762}
       scale: {x: 1.0000005, y: 1.0000004, z: 0.9999999}
     - name: Forearm.L
       parentName: UpperArm.L
       position: {x: 0.00000023841858, y: 2.5653057, z: -2.553513e-15}
-      rotation: {x: -0.0000000032393361, y: -0.000000004219308, z: 0.11804191, w: 0.9930086}
+      rotation: {x: -0.000000004431822, y: -0.0000000039988173, z: 0.098057576, w: 0.9951807}
       scale: {x: 1, y: 0.9999999, z: 1}
     - name: Hand.L
       parentName: Forearm.L
       position: {x: 0.65676296, y: 1.8782064, z: 1.4992874e-10}
-      rotation: {x: -0.000000010030891, y: 0.000000005711317, z: -0.088972166, w: 0.99603415}
+      rotation: {x: 0.0000000026748532, y: 0.0000000015225943, z: -0.0050342083, w: 0.99998736}
       scale: {x: 1.0000039, y: 1.0000039, z: 1}
     - name: Fingers.L
       parentName: Hand.L
@@ -297,7 +362,7 @@ ModelImporter:
     - name: Target.R
       parentName: Armature
       position: {x: 1, y: 1.1902244, z: -0.035028517}
-      rotation: {x: -0.7071069, y: -5.1155452e-24, z: 5.115545e-24, w: 0.70710677}
+      rotation: {x: -0.7071069, y: 3.3365276e-32, z: 3.3637168e-32, w: 0.70710677}
       scale: {x: 1, y: 1.0000044, z: 1.0000044}
     - name: Target.R_end
       parentName: Target.R
@@ -307,7 +372,7 @@ ModelImporter:
     - name: Target.L
       parentName: Armature
       position: {x: -1.0313361, y: 1.1993433, z: -0.05394864}
-      rotation: {x: -0.7071069, y: -5.1155452e-24, z: 5.115545e-24, w: 0.70710677}
+      rotation: {x: -0.7071069, y: 3.3365276e-32, z: 3.3637168e-32, w: 0.70710677}
       scale: {x: 1, y: 1.0000044, z: 1.0000044}
     - name: Target.L_end
       parentName: Target.L
@@ -317,7 +382,7 @@ ModelImporter:
     - name: Pole.L
       parentName: Armature
       position: {x: -1.0128152, y: 3.0195677, z: 5.000743}
-      rotation: {x: -1.4210855e-14, y: 5.893224e-31, z: 7.234473e-24, w: 1}
+      rotation: {x: -1.4210855e-14, y: 4.737788e-32, z: 1.9224932e-34, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Pole.L_end
       parentName: Pole.L
@@ -327,7 +392,7 @@ ModelImporter:
     - name: Pole.R
       parentName: Armature
       position: {x: 0.9894464, y: 3.0195677, z: 5.000743}
-      rotation: {x: -1.4210855e-14, y: 5.893224e-31, z: 7.234473e-24, w: 1}
+      rotation: {x: -1.4210855e-14, y: 4.737788e-32, z: 1.9224932e-34, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Pole.R_end
       parentName: Pole.R
@@ -344,6 +409,16 @@ ModelImporter:
       position: {x: 3.5527136e-17, y: -8.881784e-18, z: -1.18232875e-24}
       rotation: {x: 0.00000008146034, y: 0, z: 2.938736e-39, w: 1}
       scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Body1
+      parentName: Character(Clone)
+      position: {x: 7.884994e-25, y: 0, z: 0}
+      rotation: {x: 0.00000008146034, y: 5.8932276e-31, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Head1
+      parentName: Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
     - name: LegLeft1
       parentName: Character(Clone)
       position: {x: -0, y: 0, z: 0}
@@ -353,16 +428,6 @@ ModelImporter:
       parentName: Character(Clone)
       position: {x: -0, y: -2.646978e-25, z: -4.3124747e-32}
       rotation: {x: 0.00000008146034, y: -0, z: -3.857091e-39, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Head1
-      parentName: Character(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Body1
-      parentName: Character(Clone)
-      position: {x: 7.884994e-25, y: 0, z: 0}
-      rotation: {x: 0.00000008146034, y: 5.8932276e-31, z: -0, w: 1}
       scale: {x: 0.01, y: 0.01, z: 0.01}
     armTwist: 0.5
     foreArmTwist: 0.5
